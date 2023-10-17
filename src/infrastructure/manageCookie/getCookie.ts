@@ -1,17 +1,22 @@
 import { decryptData } from "../encryptAnddecrypt/decrypt"
 
 export const getCookie = (name: string) => {
-    const cookies = document.cookie.split("; ").find((row) => row.startsWith(`${name}`))?.split("=")[1]
-    if (cookies) {
-        if (cookies) {
-            const cookieValueEncrypted = decodeURIComponent(cookies)
-            const cookieValueDecrypted = decryptData(cookieValueEncrypted)
-            if (cookieValueDecrypted) {
-                return cookieValueDecrypted
-            } else {
-                console.error("Valor do cookie inválido.")
+    try {
+        const cookies = document.cookie.split(';');
+        for (const cookie of cookies) {
+            const [cookieName, ...cookieValueParts] = cookie.trim().split('=');
+            if (cookieName === name) {
+                const cookieValue = cookieValueParts.join('=');
+                const cookieValueEncrypted = decodeURIComponent(cookieValue)
+                const cookieValueDecrypted = decryptData(cookieValueEncrypted)
+                if (cookieValueDecrypted) {
+                    return cookieValueDecrypted
+                } else {
+                    console.log(cookieValueEncrypted)
+                }
             }
         }
+    } catch (error) {
+        throw new Error('Erro em encontrar o value do token: ' + error)
     }
-    return null
 }

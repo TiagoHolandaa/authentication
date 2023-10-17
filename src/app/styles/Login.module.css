@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+.boxCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: auto;
+  min-height: 100vh;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formControl {
+  border-radius: 0.3rem;
+  width: auto;
+  height: 2rem;
+  background-color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  transition: all 0.4s;
+}
+
+.formControl:hover {
+  border-color: rgb(158, 101, 211);
+}
+
+.formControl:focus {
+  outline: 1px solid blueviolet;
+  border: 1px solid transparent;
+}
+
+.fwButton {
+  font-family: Arial;
+  text-transform: capitalize;
+}
+
+.fwTitle {
+  font-size: 1.5rem;
+  font-family: 'Black Han Sans', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.label {
+  margin-bottom: 0.5rem !important;
+}
+
+.bgButton {
+  color: blueviolet;
+  border-color: blueviolet;
+}
+
+.bgButton:hover {
+  color: blueviolet;
+  border-color: blueviolet;
+}
+
+.btBox {
+  margin-top: 1rem;
+  display: grid;
+}
+

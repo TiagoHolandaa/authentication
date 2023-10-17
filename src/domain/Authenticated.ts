@@ -1,4 +1,4 @@
-export interface Authenticaded {
+export interface Authenticated {
     email: string,
     password: string
 }

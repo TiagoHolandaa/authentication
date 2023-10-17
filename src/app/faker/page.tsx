@@ -1,15 +1,14 @@
-'use client'
+"use client";
 
 import { faker } from "@faker-js/faker";
 import ClientButton from "./components/ClientButton";
-import { Authenticaded } from "@/domain/Authenticated";
+import { Authenticated } from "@/domain/Authenticated";
 
 const FakerPage = () => {
-
-  const generateFakeUser = (): Authenticaded => {
+  const generateFakeUser = (): Authenticated => {
     return {
       email: faker.internet.email(),
-      password: faker.internet.password()
+      password: faker.internet.password(),
     };
   };
 
