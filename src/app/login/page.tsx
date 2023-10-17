@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { authenticatingUser } from "@/infrastructure/authentication/authenticating";
-import { Authenticated } from "@/domain/Authenticated";
+import { AuthenticationParams } from "@/domain/Authenticated";
 import AuthValidation from "@/presentation/validation/authValidation";
 import Styles from "@/app/styles/Login.module.css";
 import { FormControl, FormHelperText, Button } from "@mui/material";
@@ -26,7 +26,7 @@ const LoginPage = () => {
         return;
       }
 
-      const body: Authenticated = {
+      const body: AuthenticationParams = {
         email: email,
         password: password,
       };
