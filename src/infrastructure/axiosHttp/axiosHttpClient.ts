@@ -1,17 +1,16 @@
 import { api } from "../conection/axiosConection";
-import { HttpPostClient, HttpPostParams } from "../http/httpPostClient";
-import { HttpResponse } from "../http/httpResponse";
+import { HttpClient, HttpMethod, HttpResponse } from "../http/httpClient";
+import { HttpPostParams } from "../http/httpPostClient";
 
-export class AxiosHttpClient implements HttpPostClient<any, any> {
-    async post(params: HttpPostParams<any>): Promise<HttpResponse<any>> {
-        try {
-            const response = await api.post(params.url, params.body);
-            return {
-                statusCode: response.status,
-                body: await response.data,
-            };
-        } catch (error) {
-            throw error;
-        }
+export class AxiosHttpClient implements HttpClient {
+    post(arg0: HttpPostParams<any>) {
+      throw new Error("Method not implemented.");
     }
+    async request(method: HttpMethod, url: string): Promise<HttpResponse<any>> {
+        const { data } = await api.request<HttpResponse>({ method, url })
+
+        return { data }
+    }
+
 }
+

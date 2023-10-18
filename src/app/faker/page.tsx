@@ -2,10 +2,10 @@
 
 import { faker } from "@faker-js/faker";
 import ClientButton from "./components/ClientButton";
-import { Authenticated } from "@/domain/Authenticated";
+import { AuthenticationParams } from "@/domain/Authenticated";
 
 const FakerPage = () => {
-  const generateFakeUser = (): Authenticated => {
+  const generateFakeUser = (): AuthenticationParams => {
     return {
       email: faker.internet.email(),
       password: faker.internet.password(),

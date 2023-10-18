@@ -1,7 +1,7 @@
 import { HttpResponse } from "./httpResponse";
 
 export type HttpPostParams<T> = {
-    url: string;
+    url: "/login";
     body?: T;
 }
 
