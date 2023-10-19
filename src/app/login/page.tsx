@@ -16,10 +16,10 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       // Validar dados aqui, por exemplo, verificar se os campos não estão vazios
-      /* if (!AuthValidation.validateEmail(email)) {
+      if (!AuthValidation.validateEmail(email)) {
         setError("Email inválido")
         return
-      } */
+      }
 
       if (!AuthValidation.validatePassword(password)) {
         setError("Senha inválida");
