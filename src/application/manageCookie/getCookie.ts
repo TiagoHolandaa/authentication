@@ -1,4 +1,4 @@
-import { decryptData } from "../encryptAnddecrypt/decrypt"
+import { decryptData } from "../../infrastructure/encryptAnddecrypt/decrypt"
 
 export const getCookie = (name: string) => {
     try {

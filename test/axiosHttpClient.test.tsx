@@ -4,7 +4,7 @@ import {
   AxiosHttpPostClient,
   AxiosHttpPutClient,
 } from "@/infrastructure/axiosHttp/axiosHttpClient"; // Importe a classe que você deseja testar
-import { apiHost } from "@/infrastructure/conection/axiosConection";
+import { apiHost } from "@/application/conection/axiosConection";
 
 // Mock da função request para evitar chamadas reais à API
 jest.mock("axios", () => {

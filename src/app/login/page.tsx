@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from "react";
-import { authenticatingUser } from "@/infrastructure/authentication/authenticating";
+import { authenticatingUser } from "@/application/authentication/authenticating";
 import { AuthenticationParams } from "@/domain/Authenticated";
 import AuthValidation from "@/presentation/validation/authValidation";
 import Styles from "@/app/styles/Login.module.css";

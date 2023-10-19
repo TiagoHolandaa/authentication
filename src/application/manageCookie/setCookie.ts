@@ -1,4 +1,4 @@
-import { encryptData } from "../encryptAnddecrypt/encrypt";
+import { encryptData } from "../../infrastructure/encryptAnddecrypt/encrypt";
 
 export const setCookie = (name: string, value: string, timeHour: number) => {
     const expirationDate = new Date()

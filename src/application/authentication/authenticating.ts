@@ -1,6 +1,6 @@
 //import { api } from "@/src/infrastructure/conection/axiosConection";
 import { AuthenticationParams } from "@/domain/Authenticated";
-import { setCookie } from "@/infrastructure/manageCookie/setCookie";
+import { setCookie } from "@/application/manageCookie/setCookie";
 
 export const authenticatingUser = async (user: AuthenticationParams) => {
     try {
