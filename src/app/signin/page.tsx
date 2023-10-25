@@ -1,11 +1,13 @@
-'use client'
+"use client";
 
 import * as React from "react";
+import Image from "next/image";
+import logo from "../../../public/logo.svg"
+import styles from "../../../assets/styles/Login.module.css";
 import { authenticatingUser } from "@/application/authentication/authenticating";
 import { AuthenticationParams } from "@/domain/Authenticated";
 import AuthValidation from "@/presentation/validation/authValidation";
-import Styles from "@/app/styles/Login.module.css";
-import { FormControl, FormHelperText, Button } from "@mui/material";
+import { FormControl, FormHelperText, Button, Container } from "@mui/material";
 
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
@@ -17,8 +19,8 @@ const LoginPage = () => {
     try {
       // Validar dados aqui, por exemplo, verificar se os campos não estão vazios
       if (!AuthValidation.validateEmail(email)) {
-        setError("Email inválido")
-        return
+        setError("Email inválido");
+        return;
       }
 
       if (!AuthValidation.validatePassword(password)) {
@@ -38,56 +40,53 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={Styles.boxCenter}>
-      <div className={Styles.fwTitle}>Login</div>
+    <Container className={styles.boxCenter}>
+      <div>
+        <Image src={logo} alt="logo" />
+      </div>
+      <div className={styles.fwTitle}>Login</div>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <FormControl className={Styles.formGroup}>
-          <label htmlFor="email" className={Styles.label}>
+        <FormControl className={styles.formGroup}>
+          <label htmlFor="email" className={styles.label}>
             Email
           </label>
           <input
             id="email"
-            className={Styles.formControl}
+            className={styles.formControl}
             placeholder="exemplo@exemplo.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <FormHelperText id="my-helper-text">
-            We'll never share your email.
-          </FormHelperText>
         </FormControl>
-        <FormControl className={Styles.formGroup}>
-          <label htmlFor="password" className={Styles.label}>
+        <FormControl className={styles.formGroup}>
+          <label htmlFor="password" className={styles.label}>
             Senha
           </label>
           <input
             id="password"
             type="password"
-            className={Styles.formControl}
+            className={styles.formControl}
             placeholder="Senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <FormHelperText id="my-helper-text">
-            We'll never share your email.
-          </FormHelperText>
         </FormControl>
-        <div className={Styles.btBox}>
+        <div className={styles.btBox}>
           <Button
             disabled={false}
             type="submit"
             size="medium"
             variant="outlined"
-            className={`${Styles.fwButton} ${Styles.bgButton}`}
+            className={`${styles.fwButton} ${styles.bgButton}`}
           >
             Entrar
           </Button>
           {error && <p>{error}</p>}
         </div>
       </form>
-    </div>
+    </Container>
   );
 };
 
