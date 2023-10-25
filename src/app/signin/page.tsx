@@ -7,7 +7,7 @@ import styles from "../../../assets/styles/Login.module.css";
 import { authenticatingUser } from "@/application/authentication/authenticating";
 import { AuthenticationParams } from "@/domain/Authenticated";
 import AuthValidation from "@/presentation/validation/authValidation";
-import { FormControl, Button, Container  } from "@mui/material";
+import { FormControl, Button } from "@mui/material";
 
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
@@ -40,7 +40,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Container className={styles.boxCenter}>
+    <div className={styles.boxCenter}>
       <div>
         <Image src={logo} alt="logo" />
       </div>
@@ -87,7 +87,7 @@ const LoginPage = () => {
           {error && <p>{error}</p>}
         </div>
       </form>
-    </Container>
+    </div>
   );
 };
 
