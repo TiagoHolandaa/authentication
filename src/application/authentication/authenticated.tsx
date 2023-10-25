@@ -1,43 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import Loading from '@/app/components/loading';
-import { getCookie } from '../manageCookie/getCookie';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Loading from "@/app/components/loading";
+import { getCookie } from "../manageCookie/getCookie";
+import { decryptData } from "@/infrastructure/encryptAnddecrypt/decrypt";
 
 interface WithAuthProps {
-    // Defina as propriedades que o componente WrappedComponent aceita
-    // por exemplo, você pode adicionar propriedades específicas da página protegida.
-  }
-  
-  const withAuth = <T extends WithAuthProps>(WrappedComponent: React.ComponentType<T>) => {
-    return (props: T) => {
-      const router = useRouter();
-      const [isLoading, setLoading] = useState<boolean>(true);
-      const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
-  
-      useEffect(() => {
-        const checkAuthentication = async () => {
-          const recoveredToken = getCookie("token")
+  token: string;
+}
 
-          if (recoveredToken) {
-            setIsAuthenticated(true)
-          }
-          
-          setLoading(false); // Defina isLoading para falso quando a verificação estiver concluída.
-  
-          if (!isAuthenticated) {
-            router.push('/login'); // Redirecione para a página de login se o usuário não estiver autenticado.
-          }
-        };
-  
-        checkAuthentication();
-      }, [router]);
-  
-      if (isLoading) {
-        return <Loading />;
-      }
-  
-      return <WrappedComponent {...props} />;
-    };
+const withAuth = <T extends WithAuthProps>(
+  WrappedComponent: React.ComponentType<T>
+) => {
+  return (props: T) => {
+    const router = useRouter();
+    const [isLoading, setLoading] = useState<boolean>(true);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
+    const [test, setTest] = useState("")
+
+    useEffect(() => {
+      const checkAuthentication = async () => {
+        const recoveredToken = getCookie("token");
+        console.log(recoveredToken);
+        if (recoveredToken) {
+          setIsAuthenticated(true);
+          setTest("teste")
+          console.log(test)
+        }
+
+        /* if (!isAuthenticated) {
+          router.push("/signin"); // Redirecione para a página de login se o usuário não estiver autenticado.
+        } */
+
+        setLoading(false); // Defina isLoading para falso quando a verificação estiver concluída.
+
+      };
+
+      checkAuthentication();
+    }, []);
+
+    if (isLoading) {
+      return <Loading />;
+    }
+
+    return <WrappedComponent {...props} />;
   };
-  
-  export default withAuth;
+};
+
+export default withAuth;

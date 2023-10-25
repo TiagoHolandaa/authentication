@@ -1,0 +1,37 @@
+FROM node:18-alpine as deps
+
+ENV NODE_ENV=production
+
+RUN apk add --no-chace libc6-compact
+WORKDIR /app
+COPY package.json yarn-lock ./ 
+RUN yarn install --frozen-lockfile
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY . .
+COPY package.json yarn-lock ./
+COPY --from=deps /app/node_modules ./node_modules
+
+COPY scr/app ./scr/app
+COPY public ./public
+COPY  styles ./styles
+
+RUN yarn build
+
+FROM node:18-apline as runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN addgroup --system --git 1001 nodejs
+RUN adduser --system -uuid 1001 nextjs
+
+COPY --from=builder /app/next.config.js/ ./
+COPY --from=builder /app/public/ ./public
+
+COPY --from=builder  --chown=nextjs:nodejs /app/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+CMD ["node", "server.js"]
+

@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
 import * as React from "react";
 import { authenticatingUser } from "@/application/authentication/authenticating";
 import { AuthenticationParams } from "@/domain/Authenticated";
 import AuthValidation from "@/presentation/validation/authValidation";
-import Styles from "@/app/styles/Login.module.css";
-import { FormControl, FormHelperText, Button } from "@mui/material";
+import Styles from "../../../assets/styles/Login.module.css";
+import { FormControl, Button } from "@mui/material";
 
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
@@ -17,8 +17,8 @@ const LoginPage = () => {
     try {
       // Validar dados aqui, por exemplo, verificar se os campos não estão vazios
       if (!AuthValidation.validateEmail(email)) {
-        setError("Email inválido")
-        return
+        setError("Email inválido");
+        return;
       }
 
       if (!AuthValidation.validatePassword(password)) {
@@ -53,9 +53,6 @@ const LoginPage = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <FormHelperText id="my-helper-text">
-            We'll never share your email.
-          </FormHelperText>
         </FormControl>
         <FormControl className={Styles.formGroup}>
           <label htmlFor="password" className={Styles.label}>
@@ -70,9 +67,6 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <FormHelperText id="my-helper-text">
-            We'll never share your email.
-          </FormHelperText>
         </FormControl>
         <div className={Styles.btBox}>
           <Button
@@ -84,6 +78,7 @@ const LoginPage = () => {
           >
             Entrar
           </Button>
+          <a href="/signup">Cadastrar</a>
           {error && <p>{error}</p>}
         </div>
       </form>
