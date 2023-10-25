@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 "use client"
+=======
+import Image from "next/image";
+import styles from "../../assets/styles/page.module.css";
+>>>>>>> b141b75f0d2c1ac55e2ef886b1527f657ebab816
 
 import Image from "next/image";
 import styles from "../../assets/styles/page.module.css";
