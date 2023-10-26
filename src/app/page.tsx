@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import styles from "../../assets/styles/page.module.css";
-import withAuth from "@/application/authentication/authenticated";
 
 function Home() {
   return (
@@ -95,4 +94,4 @@ function Home() {
   );
 }
 
-export default withAuth(Home)
+export default Home

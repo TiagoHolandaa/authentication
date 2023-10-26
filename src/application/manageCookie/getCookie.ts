@@ -13,6 +13,6 @@ export const getCookie = (name: string) => {
             }
         }
     } catch (error) {
-        throw new Error('Erro em encontrar o value do token: ' + error)
+        console.log('Erro em encontrar o value do token: ' + error)
     }
 }

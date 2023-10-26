@@ -47,9 +47,6 @@ const LoginPage = () => {
 
   return (
     <Container className={styles.boxCenter}>
-      <div>
-        <Image src={logo} alt="logo" />
-      </div>
       <div className={styles.fwTitle}>Login</div>
       <form onSubmit={(e) => handleSubmit(e)}>
         <FormControl className={styles.formGroup}>

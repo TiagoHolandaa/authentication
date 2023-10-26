@@ -1,6 +1,7 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { APP_ROUTES } from "../constants/appRouter";
 
-class LoginPageRoute {
+export default class LoginPageRoute {
   private router;
 
   constructor() {
@@ -8,8 +9,6 @@ class LoginPageRoute {
   }
 
   navigateToHomePage() {
-    this.router.push("/");
+    this.router.push(APP_ROUTES.public.signin);
   }
 }
-
-export default LoginPageRoute;

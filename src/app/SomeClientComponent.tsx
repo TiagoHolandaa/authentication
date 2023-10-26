@@ -16,8 +16,6 @@ export default function SomeClientComponent({
   const pathname = usePathname()
   const isPublicPage = checkIsPublicRoute(pathname)
 
-  console.log(isPublicPage)
-
   return (
     <html lang="pt-br">
       <body className={inter.className}>

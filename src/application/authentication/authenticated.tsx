@@ -9,14 +9,15 @@ type PrivateRouteProps = {
 }
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
+  const {push} = useRouter()
+
   const isUserAuthenticated = checkUserAuthenticated()
-  const { push } = useRouter()
 
   useEffect(() => {
     if (!isUserAuthenticated) {
       push(APP_ROUTES.public.signin)
     }
-  }, [isUserAuthenticated, push])
+  }, [isUserAuthenticated])
 
   return (
     <>
