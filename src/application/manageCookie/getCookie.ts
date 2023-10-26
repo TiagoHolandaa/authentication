@@ -9,11 +9,7 @@ export const getCookie = (name: string) => {
                 const cookieValue = cookieValueParts.join('=');
                 const cookieValueEncrypted = decodeURIComponent(cookieValue)
                 const cookieValueDecrypted = decryptData(cookieValueEncrypted)
-                if (cookieValueDecrypted) {
-                    return cookieValueDecrypted
-                } else {
-                    console.log(cookieValueEncrypted)
-                }
+                return cookieValueDecrypted
             }
         }
     } catch (error) {

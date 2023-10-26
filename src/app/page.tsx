@@ -1,7 +1,10 @@
+"use client"
+
 import Image from "next/image";
 import styles from "../../assets/styles/page.module.css";
+import withAuth from "@/application/authentication/authenticated";
 
-export default function Home() {
+function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -91,3 +94,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default withAuth(Home)

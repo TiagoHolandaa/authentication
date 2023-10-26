@@ -4,3 +4,4 @@ build
 .git
 *.mid
 .gitignore
+README.md
