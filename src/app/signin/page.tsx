@@ -7,7 +7,7 @@ import styles from "../../../assets/styles/Login.module.css";
 import { authenticatingUser } from "@/application/authentication/authenticating";
 import { AuthenticationParams } from "@/domain/Authenticated";
 import AuthValidation from "@/presentation/validation/authValidation";
-import { FormControl, FormHelperText, Button, Container } from "@mui/material";
+import { FormControl, Button, Container } from "@mui/material";
 import { APP_ROUTES } from "@/presentation/constants/appRouter";
 import { useRouter } from "next/navigation";
 

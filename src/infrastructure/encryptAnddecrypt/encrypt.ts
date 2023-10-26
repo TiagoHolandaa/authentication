@@ -7,7 +7,6 @@ export const encryptData = (data: string) => {
         const encryptedData = CryptoJS.AES.encrypt(data, key).toString()
         return encryptedData;
     } catch (error) {
-        console.error("Error encriptar o dado", error)
         return null
     }
 }
