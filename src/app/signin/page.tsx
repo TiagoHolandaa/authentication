@@ -8,11 +8,15 @@ import { authenticatingUser } from "@/application/authentication/authenticating"
 import { AuthenticationParams } from "@/domain/Authenticated";
 import AuthValidation from "@/presentation/validation/authValidation";
 import { FormControl, FormHelperText, Button, Container } from "@mui/material";
+import { APP_ROUTES } from "@/presentation/constants/appRouter";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
+
+  const { push } = useRouter()
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -34,6 +38,8 @@ const LoginPage = () => {
       };
 
       authenticatingUser(body);
+
+      push(APP_ROUTES.private.home.name)
     } catch (err: any) {
       setError(err);
     }

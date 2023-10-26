@@ -1,43 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import Loading from '@/app/components/loading';
-import { getCookie } from '../manageCookie/getCookie';
+import { useRouter } from "next/navigation";
+import { ReactNode, useEffect } from "react";
 
-interface WithAuthProps {
-    // Defina as propriedades que o componente WrappedComponent aceita
-    // por exemplo, você pode adicionar propriedades específicas da página protegida.
-  }
-  
-  const withAuth = <T extends WithAuthProps>(WrappedComponent: React.ComponentType<T>) => {
-    return (props: T) => {
-      const router = useRouter();
-      const [isLoading, setLoading] = useState<boolean>(true);
-      const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
-  
-      useEffect(() => {
-        const checkAuthentication = async () => {
-          const recoveredToken = getCookie("token")
+import { APP_ROUTES } from "@/presentation/constants/appRouter";
+import { checkUserAuthenticated } from "@/presentation/functions/checkUserAuthenticated";
 
-          if (recoveredToken) {
-            setIsAuthenticated(true)
-          }
-          
-          setLoading(false); // Defina isLoading para falso quando a verificação estiver concluída.
-  
-          if (!isAuthenticated) {
-            router.push('/login'); // Redirecione para a página de login se o usuário não estiver autenticado.
-          }
-        };
-  
-        checkAuthentication();
-      }, [router]);
-  
-      if (isLoading) {
-        return <Loading />;
-      }
-  
-      return <WrappedComponent {...props} />;
-    };
-  };
-  
-  export default withAuth;
+type PrivateRouteProps = {
+  children: ReactNode
+}
+
+const PrivateRoute = ({ children }: PrivateRouteProps) => {
+  const { push } = useRouter()
+
+  const isUserAuthenticated = checkUserAuthenticated()
+
+  useEffect(() => {
+    if (!isUserAuthenticated) {
+      push(APP_ROUTES.public.signin)
+    }
+  }, [isUserAuthenticated, push])
+
+  return (
+    <>
+      {!isUserAuthenticated && null}
+      {isUserAuthenticated && children}
+    </>
+  )
+}
+
+export default PrivateRoute
