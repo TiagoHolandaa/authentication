@@ -5,7 +5,7 @@ import styles from "../../assets/styles/page.module.css";
 
 function Home() {
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
@@ -90,7 +90,7 @@ function Home() {
           </p>
         </a>
       </div>
-    </main>
+    </div>
   );
 }
 

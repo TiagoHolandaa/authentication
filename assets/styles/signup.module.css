@@ -7,24 +7,13 @@
   min-height: 100vh;
 }
 
-.boxLogin {
-  padding-left: 26.8rem !important;
-  padding-right: 26.8rem !important;
-  display: flex;
-  justify-content: center;
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-}
-
 .formControl {
   border-radius: 0.3rem;
   background-color: #0a0a0a;
   border: 1px solid #000;
-  padding: 1rem;
   transition: all 0.4s;
+  padding: 1rem;
+  margin-right: 1rem;
 }
 
 .formControl:hover {
@@ -36,22 +25,32 @@
   border: 1px solid transparent;
 }
 
-.fwButton {
-  font-family: Arial;
-  text-transform: capitalize;
-}
-
 .fwTitle {
   font-family: var(--font-dela);
   margin-bottom: 1rem;
   font-size: 2rem;
   font-weight: 400;
   display: flex;
-  text-align: start!important;
+  text-align: start !important;
 }
 
-.label {
-  margin-bottom: 0.5rem !important;
+.boxForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  grid-row: 1;
+}
+
+.btBox {
+  margin-top: 1rem;
+  display: grid;
+}
+
+.fwButton {
+  font-family: Arial;
+  text-transform: capitalize;
 }
 
 .bgButton {
@@ -64,12 +63,12 @@
   border-color: blueviolet;
 }
 
-.btBox {
-  margin-top: 1rem;
-  display: grid;
+.btSignup {
+    display: grid;
+    margin-top: 1rem;
 }
 
-@media (max-width: 567px) {
+@media (max-width: 576px) {
   .formControl {
     border-radius: 0.3rem;
     width: auto;
@@ -79,5 +78,18 @@
     padding: 1rem;
     transition: all 0.4s;
   }
-}
 
+  .boxCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: auto;
+    min-height: 100vh;
+  }
+
+  .formGoup {
+    display: flex;
+    flex-direction: column;
+  }
+}

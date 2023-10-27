@@ -1,10 +1,9 @@
 export const APP_ROUTES = {
     private: {
-        home: {
-            name: "/"
-        }
+        home: "/",
     },
     public: {
-        signin: "/signin"
+        signin: "/signin",
+        signup: "/signup"
     }
 }

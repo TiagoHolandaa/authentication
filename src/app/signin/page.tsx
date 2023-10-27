@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
-import logo from "../../../public/logo.svg"
 import styles from "../../../assets/styles/Login.module.css";
 import { authenticatingUser } from "@/application/authentication/authenticating";
 import { AuthenticationParams } from "@/domain/Authenticated";
@@ -39,7 +37,7 @@ const LoginPage = () => {
 
       authenticatingUser(body);
 
-      push(APP_ROUTES.private.home.name)
+      push(APP_ROUTES.private.home)
     } catch (err: any) {
       setError(err);
     }
@@ -87,6 +85,11 @@ const LoginPage = () => {
             Entrar
           </Button>
           {error && <p>{error}</p>}
+          <div>
+            <a href="/signup">
+              Sign up
+            </a>
+          </div>
         </div>
       </form>
     </Container>

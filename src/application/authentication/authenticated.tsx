@@ -1,14 +1,10 @@
 import { useRouter } from "next/navigation";
-import { ReactNode, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { APP_ROUTES } from "@/presentation/constants/appRouter";
 import { checkUserAuthenticated } from "@/presentation/functions/checkUserAuthenticated";
 
-type PrivateRouteProps = {
-  children: ReactNode
-}
-
-const PrivateRoute = ({ children }: PrivateRouteProps) => {
+const PrivateRoute = ({ children }: {children: React.ReactNode}) => {
   const {push} = useRouter()
 
   const isUserAuthenticated = checkUserAuthenticated()
