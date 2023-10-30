@@ -1,10 +1,10 @@
 export interface User {
     email: string,
     password: string,
-    nameComple: string,
-    CPF: string;
+    nameComplete: string,
+    cpf: string;
     phone: {
-        DDD: number,
-        numPhone: number
+        ddd: string,
+        numPhone: string
     }
 }

@@ -54,7 +54,7 @@ describe("AxiosHttpClient", () => {
     // Realize uma chamada de POST com a instância do cliente
     const response = await httpClient.request(
       "post",
-      `${apiHost}/get`,
+      `${apiHost}/post`,
       loginData
     );
 
@@ -71,7 +71,7 @@ describe("AxiosHttpClient", () => {
 
     // Realize uma chamada de POST com a instância do cliente
     try {
-      await httpClient.request("post", `${apiHost}/get`, loginData);
+      await httpClient.request("post", `${apiHost}/post`, loginData);
     } catch (error) {
       // Verifique se ocorreu um erro post
       expect(error).toEqual("Test Data");

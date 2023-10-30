@@ -35,7 +35,7 @@ const LoginPage = () => {
         password: password,
       };
 
-      authenticatingUser(body);
+      await authenticatingUser(body);
 
       push(APP_ROUTES.private.home)
     } catch (err: any) {
@@ -85,7 +85,7 @@ const LoginPage = () => {
             Entrar
           </Button>
           {error && <p>{error}</p>}
-          <div>
+          <div className={styles.linkSignup}>
             <a href="/signup">
               Sign up
             </a>
