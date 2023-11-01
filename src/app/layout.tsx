@@ -1,7 +1,11 @@
+"use"
 import "../../assets/styles/globals.css";
 import type { Metadata } from "next";
 
 import SomeClientComponent from "./SomeClientComponent";
+import { usePathname } from "next/navigation";
+import { checkIsPublicRoute } from "@/presentation/functions/checkIsPublicRoute";
+import PrivateRoute from "@/application/authentication/authenticated";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -9,9 +13,15 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+  const isPublicPage = checkIsPublicRoute(pathname)
+
   return (
-    <SomeClientComponent>
-      {children}
-    </SomeClientComponent>
+    <html lang="pt-br">
+      <body>
+        {isPublicPage && children}
+        {!isPublicPage && <PrivateRoute>{children}</PrivateRoute>}
+      </body>
+    </html>
   )
 }

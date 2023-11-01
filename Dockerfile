@@ -1,16 +1,7 @@
-FROM node:16-alpine
-
+FROM node:18
 WORKDIR /app
-
-COPY package*.json yarn.lock ./
-RUN yarn install
-
 COPY . .
-
+RUN npm install
 RUN npm run build
-
 EXPOSE 3000
-
-USER node
-
-CMD ["yarn", "dev"]
+CMD ["npm", "start"]
