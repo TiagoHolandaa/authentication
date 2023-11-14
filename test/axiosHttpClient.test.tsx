@@ -3,7 +3,7 @@ import {
   AxiosHttpGetClient,
   AxiosHttpPostClient,
   AxiosHttpPutClient,
-} from "@/infrastructure/axiosHttp/axiosHttpClient"; // Importe a classe que você deseja testar
+} from "@/infrastructure/axiosHttp/AxiosHttpClient"; // Importe a classe que você deseja testar
 import { apiHost } from "@/application/conection/axiosConection";
 
 // Mock da função request para evitar chamadas reais à API

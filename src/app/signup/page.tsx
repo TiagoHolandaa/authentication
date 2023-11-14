@@ -49,7 +49,6 @@ const SignupPage = () => {
             email, password, nameComplete, cpf, phone
         }
 
-        e.preventDefault()
         await signup(body)
         push(APP_ROUTES.public.signin)
     }

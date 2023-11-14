@@ -3,17 +3,17 @@
 import * as React from "react";
 import styles from "../../../assets/styles/Login.module.css";
 import { authenticatingUser } from "@/application/authentication/authenticating";
-import { AuthenticationParams } from "@/domain/Authenticated";
+import { IAuthetication } from "@/domain/Authenticated";
 import AuthValidation from "@/presentation/validation/authValidation";
 import { FormControl, Button, Container } from "@mui/material";
 import { APP_ROUTES } from "@/presentation/constants/appRouter";
 import { useRouter } from "next/navigation";
 
-const LoginPage = () => {
+const LoginPage = (props: IAuthetication) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
-
+  
   const { push } = useRouter()
 
   const handleSubmit = async (e: any) => {
@@ -30,14 +30,16 @@ const LoginPage = () => {
         return;
       }
 
-      const body: AuthenticationParams = {
+      const authenticationParams = {
         email: email,
-        password: password,
+        password: password        
       };
+  
+      // Assuming 'props.authentication' is of type 'IAuthetication'
+      await props?.auth(authenticationParams)
+      authenticatingUser(authenticationParams)
 
-      await authenticatingUser(body);
-
-      push(APP_ROUTES.private.home)
+      //push(APP_ROUTES.private.home)
     } catch (err: any) {
       setError(err);
     }

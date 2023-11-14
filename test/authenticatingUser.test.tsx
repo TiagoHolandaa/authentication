@@ -1,5 +1,5 @@
 import { authenticatingUser } from '@/application/authentication/authenticating';
-import { AxiosHttpPostClient } from '@/infrastructure/axiosHttp/axiosHttpClient';
+import { AxiosHttpPostClient } from '@/infrastructure/axiosHttp/AxiosHttpClient';
 import * as setCookieModule from '../src/application/manageCookie/setCookie';
 
 

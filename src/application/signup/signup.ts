@@ -1,5 +1,5 @@
 import { User } from '@/domain/User';
-import { AxiosHttpPostClient } from '@/infrastructure/axiosHttp/axiosHttpClient';
+import { AxiosHttpPostClient } from '@/infrastructure/axiosHttp';
 import { apiHost } from '../conection/axiosConection';
 
 const signup = async (user: User) => {
